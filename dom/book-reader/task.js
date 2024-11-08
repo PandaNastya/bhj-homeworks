@@ -6,12 +6,11 @@ fontSizeElements.forEach((fontSize) => {
         event.preventDefault();
         fontSizeElements.forEach(fontSize => fontSize.classList.remove("font-size_active"));
         event.target.classList.add("font-size_active");
-        const fontIndex = fontSizeElements.indexOf(event.target);
-        book.className = "book";
-        if (fontIndex === 0) {
-            book.classList.add("book_fs-small");
-        } else if (fontIndex === fontSizeElements.length - 1) {
-            book.classList.add("book_fs-big");
+        
+        book.classList.remove('book_fs-small', 'book_fs-big');
+        const size = event.target.dataset.size;
+        if (size) {
+            book.classList.add(`book_fs-${size}`);
         }
     })
 })
